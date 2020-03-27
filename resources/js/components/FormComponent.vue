@@ -14,6 +14,7 @@
           <option value="0">NO</option>
         </select>
         <textarea v-else-if="input.type === 'textarea'" v-model="document[input.bind]" :class="'form-control' + isInvalidClass(input.bind)" rows="5"></textarea>
+        <image-upload-input v-else-if="input.type === 'image'" v-model="document[input.bind]" :private="0"/>
         <tag-input v-else-if="input.type === 'tags'" :tags="document[input.bind]" :config="input.config" @tags-changed="newTags => document[input.bind] = newTags"/>
         <small v-if="input.info !== undefined" class="form-text text-muted">
           {{ input.info }}
@@ -28,9 +29,10 @@
 
 <script>
   import TagInput from "./inputs/TagsInput";
+  import ImageUploadInput from "./inputs/ImageUploadInput";
   export default {
     name: "FormComponent",
-    components: {TagInput},
+    components: {ImageUploadInput, TagInput},
     props: {
       schema: {
         default() {

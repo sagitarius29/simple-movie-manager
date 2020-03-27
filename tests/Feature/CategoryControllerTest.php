@@ -24,6 +24,11 @@ class CategoryControllerTest extends CrudTestCase
         return ['name', 'order'];
     }
 
+    protected function excludeAttrBeforeAssert(): array
+    {
+        return ['acl'];
+    }
+
     public function test_list()
     {
         $this->list_test();

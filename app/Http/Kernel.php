@@ -38,6 +38,7 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
+            \Spatie\Cors\Cors::class,
             'throttle:60,1',
             'bindings',
         ],

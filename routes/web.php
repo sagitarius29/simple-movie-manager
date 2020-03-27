@@ -21,6 +21,12 @@ Auth::routes([
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//Upload
+Route::post('upload/image', 'UploadController@imageUpload')->name('upload.image');
+Route::post('upload/universal-file', 'UploadController@universalUpload')->name('upload.universal-file');
+Route::get('file/private/{fileName}', 'UploadController@getPrivateFile')->name('file.private');
+
+//Authenticated
 Route::middleware('auth')->group(function() {
     //Categories
     \App\Helper::routes_crud('categories', 'CategoryController', 'categories', '{category}');

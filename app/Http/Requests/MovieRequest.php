@@ -24,7 +24,7 @@ class MovieRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:250',
+            'name' => 'nullable|string|max:250',
             'cover' => 'required|url|max:250',
             'url' => 'nullable|url|max:250'
         ];

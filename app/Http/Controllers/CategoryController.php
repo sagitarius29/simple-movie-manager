@@ -19,6 +19,8 @@ class CategoryController extends Controller
 
         $processor->setSearchCols(['name']);
 
+        $processor->enableGetAll();
+
         return $processor->render();
     }
 

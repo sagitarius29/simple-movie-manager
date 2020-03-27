@@ -23,7 +23,7 @@ class CategoryMoviesControllerTest extends CrudTestCase
 
     protected function validationStoreErrorExpected(): array
     {
-        return ['name', 'cover'];
+        return ['cover'];
     }
 
     protected function excludeAttrBeforeAssert(): array

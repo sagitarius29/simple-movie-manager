@@ -29,7 +29,7 @@ class CreateAppTables extends Migration
 
             $table->increments('id');
             $table->string('name', 200)->nullable();
-            $table->string('cover', 250)->nullable();
+            $table->string('cover', 250);
             $table->string('url', 250)->nullable();
 
             $table->timestamps();
