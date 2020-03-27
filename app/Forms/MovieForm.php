@@ -16,6 +16,7 @@ class MovieForm implements FormContract
 
         $formGenerator->group('General', function (FormGroup $form) {
 
+            $form->addInput('Cover URL', 'cover', 'text');
             $form->addInput('Cover', 'cover', 'image');
             $form->addInput('Nombre', 'name', 'text');
             $form->addInput('Video URL', 'url', 'text');
