@@ -17,6 +17,8 @@ class CategoryController extends Controller
 
         $processor->setDefaultSort('order', 'desc');
 
+        $processor->setAvailableSortables(['order', 'name']);
+
         $processor->setSearchCols(['name']);
 
         $processor->enableGetAll();
