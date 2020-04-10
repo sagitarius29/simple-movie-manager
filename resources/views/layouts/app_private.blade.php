@@ -50,10 +50,10 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Series</a>
+                                <router-link class="nav-link" to="/categories-series">Series</router-link>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Películas</a>
+                                <router-link class="nav-link" to="/categories">Películas</router-link>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

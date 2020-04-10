@@ -12,7 +12,7 @@
                         <form-dynamic-component endpoint="categories/form-schema" :document="document" :errors="errors"/>
                     </template>
                     <template v-slot:actionicon="{rowData}">
-                        <router-link :to="'/categories/' + rowData.id" class="btn btn-outline-primary" title="Lista de Películas"><i class="fas fa-film"/></router-link>
+                        <router-link :to="{name: 'categories.movies', params: {id: rowData.id}}" class="btn btn-outline-primary" title="Lista de Películas"><i class="fas fa-film"/></router-link>
                     </template>
                 </list-page-component>
             </div>
