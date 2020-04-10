@@ -8,6 +8,6 @@ $factory->define(\App\Entities\Season::class, function (Faker $faker) {
     return [
         'name' => $faker->sentence,
         'order' => $faker->numberBetween(0,100),
-        'series_id' => \App\Helper::random_or_create(\App\Entities\Serie::class)->id
+        'serie_id' => \App\Helper::random_or_create(\App\Entities\Serie::class)->id
     ];
 });

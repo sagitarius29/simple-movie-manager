@@ -36,11 +36,6 @@ class SerieControllerTest extends CrudTestCase
         return ['acl'];
     }
 
-    /*protected function afterFactoryCreate(Collection $items)
-    {
-        $this->category->series()->sync($items);
-    }*/
-
     protected function createParent() {
         $this->category = factory(CategorySerie::class)->create();
         $this->setParentId($this->category->id);
