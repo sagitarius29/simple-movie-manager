@@ -16,6 +16,11 @@ use Illuminate\Http\Request;
 Route::get('categories', 'CategoryController@index');
 Route::get('categories/{category}/movies', 'MovieController@index');
 
+Route::get('categories-series', 'Series\CategorySerieController@index');
+Route::get('categories-series/{category}/series', 'Series\SerieController@index');
+Route::get('series/{serie}/seasons', 'Series\SeasonController@index');
+Route::get('seasons/{season}/chapters', 'Series\ChapterController@index');
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

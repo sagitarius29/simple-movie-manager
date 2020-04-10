@@ -84140,7 +84140,7 @@ var render = function() {
           _c("list-page-component", {
             ref: "listPage",
             attrs: {
-              "header-title": "Lista de Categorias",
+              "header-title": "Lista de Categorias Películas",
               endpoint: "categories",
               "element-name": "Categoría",
               "element-default": _vm.documentDefault,

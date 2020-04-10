@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <list-page-component header-title="Lista de Categorias"
+                <list-page-component header-title="Lista de Categorias Películas"
                                      endpoint="categories"
                                      element-name="Categoría"
                                      :element-default="documentDefault"
