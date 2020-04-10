@@ -2,10 +2,13 @@
 
 namespace App\Entities;
 
+use App\Entities\Traits\WithACL;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
+    use WithACL;
+
     protected $table = 'categories';
 
     protected $fillable = [
@@ -13,14 +16,6 @@ class Category extends Model
     ];
 
     protected $appends = ['acl'];
-
-    public function getAclAttribute()
-    {
-        return [
-            'update' => true,
-            'delete' => true
-        ];
-    }
 
     public function movies()
     {
