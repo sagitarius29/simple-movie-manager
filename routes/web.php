@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function() {
 
 
     \App\Helper::routes_crud('categories-series', 'Series\CategorySerieController', 'categories-series', '{category}');
+    \App\Helper::routes_crud('categories-series/{category}/series', 'Series\SerieController', 'categories-series.series', '{serie}');
 
     //Movies
     \App\Helper::routes_crud('movies', 'MovieController', 'movies', '{movie}');
