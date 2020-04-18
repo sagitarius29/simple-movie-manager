@@ -39,16 +39,16 @@ class SerieController extends Controller
 
         if(isset($input['id'])) {
             $serie = Serie::find($input['id']);
+
+            //Checking if this serie has been attached ever
+            if($category->series()->where('series.id', $serie->id)->count() > 0) {
+                abort(422, 'Este elemento ya pertenece a esta categoría. '.$serie->id);
+            }
+
             $serie->fill($input);
             $serie->save();
 
-            //Checking if this serie has been attached ever
-            if($category->series()->exists($serie->id)) {
-                abort(422, 'Este elemento ya pertenece a esta categoría.');
-            }
-
-
-            $category->series()->attach($serie->id);
+            $category->series()->attach($serie);
         } else {
             $serie = new Serie($input);
             $category->series()->save($serie);

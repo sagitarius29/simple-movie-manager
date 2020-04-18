@@ -43,14 +43,16 @@ class MovieController extends Controller
         } else {
             if(isset($input['id'])) {
                 $movie = Movie::find($input['id']);
+
+                //Checking if this movie has been attached ever
+                if($category->movies()->where('movies.id', $movie->id)->count() > 0) {
+                    abort(422, 'Este elemento ya pertenece a esta categoría.');
+                }
+
                 $movie->fill($input);
                 $movie->save();
 
-                //Checking if this serie has been attached ever
-                if($category->movies()->exists($movie->id)) {
-                    abort(422, 'Este elemento ya pertenece a esta categoría.');
-                }
-                $category->movies()->attach($movie->id);
+                $category->movies()->attach($movie);
             } else {
                 $movie = new Movie($input);
                 $category->movies()->save($movie);
