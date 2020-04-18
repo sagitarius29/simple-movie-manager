@@ -33,10 +33,8 @@ class SerieController extends Controller
         return $serie;
     }
 
-    public function store(CategorySerie $category, SerieRequest $request)
+    public function storeWithCategory(CategorySerie $category, array $input)
     {
-        $input = $request->validated();
-
         if(isset($input['id'])) {
             $serie = Serie::find($input['id']);
 
@@ -53,6 +51,32 @@ class SerieController extends Controller
             $serie = new Serie($input);
             $category->series()->save($serie);
         }
+
+        return $serie;
+    }
+
+    protected function storeWithoutCategory(array $input)
+    {
+        $serie = new Serie($input);
+        $serie->save();
+
+        if(isset($input['categories'])) {
+            $categories = collect($input['categories'])->pluck('id');
+            $serie->categories()->sync($categories);
+        }
+        return $serie;
+    }
+
+    public function store(?CategorySerie $category, SerieRequest $request)
+    {
+        $input = $request->validated();
+
+        if($category->exists) {
+            $serie = $this->storeWithCategory($category, $input);
+        } else {
+            $serie = $this->storeWithoutCategory($input);
+        }
+
 
         return response()->json($serie, 201);
     }

@@ -24,9 +24,10 @@ class SerieRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:200',
-            'cover' => 'required|url|max:200',
-            'id' => 'nullable|integer|exists:series,id'
+            'name'       => 'required|string|max:200',
+            'cover'      => 'required|url|max:200',
+            'id'         => 'nullable|integer|exists:series,id',
+            'categories' => 'nullable|array',
         ];
     }
 }
