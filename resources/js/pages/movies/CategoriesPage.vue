@@ -21,8 +21,8 @@
 </template>
 
 <script>
-  import ListPageComponent from "../components/ListPageComponent";
-  import FormDynamicComponent from "../components/FormDynamicComponent";
+  import ListPageComponent from "../../components/ListPageComponent";
+  import FormDynamicComponent from "../../components/FormDynamicComponent";
   export default {
     name: "CategoriesPage",
     components: {FormDynamicComponent, ListPageComponent},

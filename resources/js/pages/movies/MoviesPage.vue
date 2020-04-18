@@ -37,14 +37,13 @@
 </template>
 
 <script>
-  import FormDynamicComponent from "../components/FormDynamicComponent";
-  import ListPageComponent from "../components/ListPageComponent";
-  import DynamicSelect from "../components/inputs/DynamicSelect";
-  import ImageUploadInput from "../components/inputs/ImageUploadInput";
+  import ListPageComponent from "../../components/ListPageComponent";
+  import DynamicSelect from "../../components/inputs/DynamicSelect";
+  import ImageUploadInput from "../../components/inputs/ImageUploadInput";
 
   export default {
     name: "MoviesPage",
-    components: {ImageUploadInput, DynamicSelect, FormDynamicComponent, ListPageComponent},
+    components: {ImageUploadInput, DynamicSelect, ListPageComponent},
     data() {
       return {
         categoryName: null,

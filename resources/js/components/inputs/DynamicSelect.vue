@@ -20,6 +20,7 @@
 
 <script>
   import vSelect from 'vue-select'
+
   export default {
     name: "DynamicSelect",
     components: {vSelect},
@@ -35,32 +36,38 @@
       },
       config: {
         default() {
-          return {
-            endpoint: null,
-            valueField: 'value',
-            nameField: 'name',
-            multiple: false,
-            loadIfSelect: true
-          }
+          return {}
         }
       },
     },
     data() {
       return {
+        defaultConfig: {
+          endpoint: null,
+          valueField: 'value',
+          nameField: 'name',
+          multiple: false,
+          loadIfSelect: true
+        },
         selected: '',
         selectedObject: null,
         options: []
       }
     },
     mounted() {
-      if(this.value !== null && this.selected === '') {
+      this.defaultConfig = _.defaults(this.config, this.defaultConfig);
+      if (this.defaultConfig.multiple) {
+        this.defaultConfig.loadIfSelect = false;
+      }
+
+      if (this.value !== null && this.selected === '') {
         this.getDocumentInfo(this.value);
       }
       this.loadOptions();
     },
     watch: {
       value(val) {
-        if(val === null) {
+        if (val === null) {
           this.selected = '';
         } else {
           this.getDocumentInfo(val);
@@ -74,7 +81,7 @@
       },
       search: _.debounce((loading, search, vm) => {
         axios.get(
-          vm.config.endpoint + '?search=' + search,
+          vm.defaultConfig.endpoint + '?search=' + search,
           {
             noloading: true
           }
@@ -84,15 +91,23 @@
         });
       }, 350),
       loadOptions() {
-        axios.get(this.config.endpoint).then((r) => {
+        axios.get(this.defaultConfig.endpoint).then((r) => {
           this.options = r.data.data;
         });
       },
       setSelected(object) {
-        if( object !== null) {
-          let val = object[this.config.valueField];
-          this.selected = object[this.config.nameField];
-          this.selectedObject = object;
+        console.log('select ', object);
+        if (object !== null) {
+          let val;
+          if (!this.defaultConfig.multiple) {
+            val = object[this.defaultConfig.valueField];
+            this.selected = object[this.defaultConfig.nameField];
+            this.selectedObject = object;
+          } else {
+            val = object;
+            this.selected = object;
+            this.selectedObject = object;
+          }
 
           this.$emit('input', val);
           this.$emit('onSelected', object);
@@ -104,15 +119,15 @@
         }
       },
       getDocumentInfo(id) {
-        if(id === '' || id === null) {
+        if (id === '' || id === null) {
           return false
         }
 
-        if(this.config.loadIfSelect !== undefined && !this.config.loadIfSelect) {
+        if (this.defaultConfig.loadIfSelect !== undefined && !this.defaultConfig.loadIfSelect) {
           return false;
         }
-        axios.get(this.config.endpoint + '/' + id).then((r) => {
-          this.selected = r.data[this.config.nameField];
+        axios.get(this.defaultConfig.endpoint + '/' + id).then((r) => {
+          this.selected = r.data[this.defaultConfig.nameField];
         });
       }
     }

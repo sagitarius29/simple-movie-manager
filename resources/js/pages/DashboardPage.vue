@@ -6,24 +6,24 @@
                     <div class="card-header">Principal</div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-6 mt-2">
                                 <router-link to="/categories" class="btn btn-light btn-options">
                                     <i class="fas fa-list"></i><br>Categorías Películas
                                 </router-link>
                             </div>
-                            <div class="col-md-3">
-                                <router-link to="/categories" class="btn btn-light btn-options">
-                                    <i class="fas fa-list"></i><br>Categorías Películas
+                            <div class="col-md-6 mt-2">
+                                <router-link to="/movies" class="btn btn-light btn-options">
+                                    <i class="fas fa-film"></i><br>Películas en General
                                 </router-link>
                             </div>
-                            <div class="col-md-3">
-                                <button class="btn btn-light btn-options">
-                                    <i class="fas fa-film"></i><br>Películas
-                                </button>
+                            <div class="col-md-6 mt-2">
+                                <router-link to="/categories-series" class="btn btn-light btn-options">
+                                    <i class="fas fa-list"></i><br>Categorías Series
+                                </router-link>
                             </div>
-                            <div class="col-md-3">
-                                <router-link to="/categories" class="btn btn-light btn-options">
-                                    <i class="fas fa-list"></i><br>Categorías
+                            <div class="col-md-6 mt-2">
+                                <router-link to="/series" class="btn btn-light btn-options">
+                                    <i class="fas fa-film"></i><br>Series en General
                                 </router-link>
                             </div>
                         </div>
