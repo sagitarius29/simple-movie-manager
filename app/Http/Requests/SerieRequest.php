@@ -25,7 +25,8 @@ class SerieRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:200',
-            'cover' => 'required|url|max:200'
+            'cover' => 'required|url|max:200',
+            'id' => 'nullable|integer|exists:series,id'
         ];
     }
 }

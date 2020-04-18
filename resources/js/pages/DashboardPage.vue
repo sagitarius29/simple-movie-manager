@@ -8,13 +8,23 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <router-link to="/categories" class="btn btn-light btn-options">
-                                    <i class="fas fa-list"></i><br>Categorías
+                                    <i class="fas fa-list"></i><br>Categorías Películas
+                                </router-link>
+                            </div>
+                            <div class="col-md-3">
+                                <router-link to="/categories" class="btn btn-light btn-options">
+                                    <i class="fas fa-list"></i><br>Categorías Películas
                                 </router-link>
                             </div>
                             <div class="col-md-3">
                                 <button class="btn btn-light btn-options">
                                     <i class="fas fa-film"></i><br>Películas
                                 </button>
+                            </div>
+                            <div class="col-md-3">
+                                <router-link to="/categories" class="btn btn-light btn-options">
+                                    <i class="fas fa-list"></i><br>Categorías
+                                </router-link>
                             </div>
                         </div>
 

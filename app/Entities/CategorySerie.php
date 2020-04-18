@@ -19,6 +19,6 @@ class CategorySerie extends Model
 
     public function series()
     {
-        return $this->hasMany(Serie::class);
+        return $this->belongsToMany(Serie::class, 'cat_series_has_series');
     }
 }

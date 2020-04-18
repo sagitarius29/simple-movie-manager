@@ -49,7 +49,6 @@ class CategoryMoviesControllerTest extends CrudTestCase
 
     public function test_show()
     {
-        $this->withoutExceptionHandling();
         $this->createParent();
         $this->show_test();
     }
@@ -70,5 +69,35 @@ class CategoryMoviesControllerTest extends CrudTestCase
     {
         $this->createParent();
         $this->delete_test();
+    }
+
+    public function test_assign_movie()
+    {
+        $this->createParent();
+        $movie = factory(Movie::class)->create();
+
+        $data = [
+            'name'  => 'Testing',
+            'cover' => 'http://cover.com/cover.png',
+            'url' => 'http://url.com/movie.mp4',
+            'id'    => $movie->id,
+        ];
+
+        $this->loginUser();
+        $this->withoutExceptionHandling();
+        $this->postJson(route($this->baseRoute.'.store', $this->category->id), $data)
+            ->assertSuccessful();
+
+        $this->assertDatabaseHas('categories_movies', [
+            'category_id' => $this->category->id,
+            'movie_id'          => $movie->id,
+        ]);
+
+        $this->assertDatabaseHas('movies', [
+            'id'    => $movie->id,
+            'name'  => 'Testing',
+            'cover' => 'http://cover.com/cover.png',
+            'url' => 'http://url.com/movie.mp4',
+        ]);
     }
 }

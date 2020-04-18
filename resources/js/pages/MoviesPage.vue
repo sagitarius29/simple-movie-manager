@@ -9,7 +9,26 @@
                                      :table-fields="tableFields"
                                      ref="listPage">
                     <template v-slot:storeupdate="{document, errors}">
-                        <form-dynamic-component endpoint="movies/form-schema" :document="document" :errors="errors"/>
+                        <div class="form-group">
+                            <label>Película existente (Opcional)</label>
+                            <dynamic-select v-model="document.id" :config="{endpoint: 'movies', nameField: 'name', valueField: 'id'}" @onSelected="selectMovie(document, $event)"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Cover URL</label>
+                            <input v-model="document.cover" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Cover Imagen</label>
+                            <image-upload-input v-model="document.cover" :private="0"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Nombre</label>
+                            <input v-model="document.name" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Video URL</label>
+                            <input v-model="document.url" type="text" class="form-control">
+                        </div>
                     </template>
                 </list-page-component>
             </div>
@@ -20,10 +39,12 @@
 <script>
   import FormDynamicComponent from "../components/FormDynamicComponent";
   import ListPageComponent from "../components/ListPageComponent";
+  import DynamicSelect from "../components/inputs/DynamicSelect";
+  import ImageUploadInput from "../components/inputs/ImageUploadInput";
 
   export default {
     name: "MoviesPage",
-    components: {FormDynamicComponent, ListPageComponent},
+    components: {ImageUploadInput, DynamicSelect, FormDynamicComponent, ListPageComponent},
     data() {
       return {
         categoryName: null,

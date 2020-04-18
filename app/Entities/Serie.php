@@ -21,4 +21,9 @@ class Serie extends Model
     {
         return $this->hasMany(Season::class);
     }
+
+    public function categories()
+    {
+        return $this->belongsToMany(CategorySerie::class, 'cat_series_has_series');
+    }
 }

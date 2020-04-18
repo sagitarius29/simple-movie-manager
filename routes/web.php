@@ -32,12 +32,16 @@ Route::middleware('auth')->group(function() {
     \App\Helper::routes_crud('categories', 'CategoryController', 'categories', '{category}');
     \App\Helper::routes_crud('categories/{category}/movies', 'MovieController', 'categories.movies', '{movie}');
 
-    //Movies
+    //Movies Global
     \App\Helper::routes_crud('movies', 'MovieController', 'movies', '{movie}');
 
     //Categories Series
     \App\Helper::routes_crud('categories-series', 'Series\CategorySerieController', 'categories-series', '{category}');
     \App\Helper::routes_crud('categories-series/{category}/series', 'Series\SerieController', 'categories-series.series', '{serie}');
+
+    //Series Global
+    Route::get('series', 'Series\SerieController@index')->name('series');
+    Route::get('series/{serie}', 'Series\SerieController@show')->name('series.show');
 
     //Seasons
     \App\Helper::routes_crud('series/{serie}/seasons', 'Series\SeasonController', 'series.seasons', '{season}');

@@ -19,8 +19,6 @@ class Category extends Model
 
     public function movies()
     {
-        return $this->belongsToMany(Movie::class, 'categories_movies')
-            ->withPivot('order')
-            ->orderBy('pivot_order', 'asc');
+        return $this->belongsToMany(Movie::class, 'categories_movies');
     }
 }

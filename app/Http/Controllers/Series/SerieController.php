@@ -13,9 +13,13 @@ use Illuminate\Http\Response;
 
 class SerieController extends Controller
 {
-    public function index(CategorySerie $category)
+    public function index(?CategorySerie $category)
     {
-        $processor = new RestProcessor($category->series());
+        if($category->exists) {
+            $processor = new RestProcessor($category->series());
+        } else {
+            $processor = new RestProcessor(Serie::class);
+        }
 
         $processor->setSearchCols(['name']);
 
@@ -24,15 +28,31 @@ class SerieController extends Controller
         return $processor->render();
     }
 
-    public function show(CategorySerie $category, Serie $serie)
+    public function show(?CategorySerie $category, Serie $serie)
     {
         return $serie;
     }
 
     public function store(CategorySerie $category, SerieRequest $request)
     {
-        $serie = new Serie($request->validated());
-        $category->series()->save($serie);
+        $input = $request->validated();
+
+        if(isset($input['id'])) {
+            $serie = Serie::find($input['id']);
+            $serie->fill($input);
+            $serie->save();
+
+            //Checking if this serie has been attached ever
+            if($category->series()->exists($serie->id)) {
+                abort(422, 'Este elemento ya pertenece a esta categoría.');
+            }
+
+
+            $category->series()->attach($serie->id);
+        } else {
+            $serie = new Serie($input);
+            $category->series()->save($serie);
+        }
 
         return response()->json($serie, 201);
     }
@@ -47,7 +67,11 @@ class SerieController extends Controller
 
     public function destroy(CategorySerie $category, Serie $serie)
     {
-        $serie->delete();
+        if(!$serie->categories()->exists()) {
+            $serie->delete();
+        } else {
+            $serie->categories()->detach($category->id);
+        }
 
         return response()->json('ok', Response::HTTP_NO_CONTENT);
     }

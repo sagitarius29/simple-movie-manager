@@ -35,11 +35,26 @@ class MovieController extends Controller
 
     public function store(?Category $category, MovieRequest $request)
     {
-        $movie = new Movie($request->validated());
+        $input = $request->validated();
+
         if(!$category->exists) {
+            $movie = new Movie($input);
             $movie->save();
         } else {
-            $category->movies()->save($movie);
+            if(isset($input['id'])) {
+                $movie = Movie::find($input['id']);
+                $movie->fill($input);
+                $movie->save();
+
+                //Checking if this serie has been attached ever
+                if($category->movies()->exists($movie->id)) {
+                    abort(422, 'Este elemento ya pertenece a esta categoría.');
+                }
+                $category->movies()->attach($movie->id);
+            } else {
+                $movie = new Movie($input);
+                $category->movies()->save($movie);
+            }
         }
 
         return response()->json($movie, 201);

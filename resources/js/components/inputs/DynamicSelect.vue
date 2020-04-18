@@ -73,7 +73,7 @@
         this.search(loading, search, this);
       },
       search: _.debounce((loading, search, vm) => {
-        api.get(
+        axios.get(
           vm.config.endpoint + '?search=' + search,
           {
             noloading: true
@@ -84,7 +84,7 @@
         });
       }, 350),
       loadOptions() {
-        api.get(this.config.endpoint).then((r) => {
+        axios.get(this.config.endpoint).then((r) => {
           this.options = r.data.data;
         });
       },
@@ -111,7 +111,7 @@
         if(this.config.loadIfSelect !== undefined && !this.config.loadIfSelect) {
           return false;
         }
-        api.get(this.config.endpoint + '/' + id).then((r) => {
+        axios.get(this.config.endpoint + '/' + id).then((r) => {
           this.selected = r.data[this.config.nameField];
         });
       }
