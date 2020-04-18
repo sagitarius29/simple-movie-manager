@@ -90,6 +90,11 @@
         axios.get('/categories/'+this.$route.params.id).then(({data}) => {
           this.categoryName = data.name;
         });
+      },
+      selectMovie(document, serie) {
+        document.cover = serie.cover;
+        document.name = serie.name;
+        document.url = serie.url;
       }
     }
   }

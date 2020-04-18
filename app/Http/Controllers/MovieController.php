@@ -70,7 +70,15 @@ class MovieController extends Controller
 
     public function destroy(?Category $category, Movie $movie)
     {
-        $movie->delete();
+        if($category->exists) {
+            $movie->categories()->detach($category->id);
+
+            if($movie->categories()->count() == 0) {
+                $movie->delete();
+            }
+        } else {
+            $movie->delete();
+        }
 
         return response()->json('ok', Response::HTTP_NO_CONTENT);
     }

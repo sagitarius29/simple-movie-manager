@@ -67,10 +67,10 @@ class SerieController extends Controller
 
     public function destroy(CategorySerie $category, Serie $serie)
     {
-        if(!$serie->categories()->exists()) {
+        $serie->categories()->detach($category->id);
+
+        if($serie->categories()->count() == 0) {
             $serie->delete();
-        } else {
-            $serie->categories()->detach($category->id);
         }
 
         return response()->json('ok', Response::HTTP_NO_CONTENT);

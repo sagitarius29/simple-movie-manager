@@ -28,6 +28,10 @@ class CreateCategoriesHasSeriesTable extends Migration
                 ->onDelete('cascade');
         });
 
+        \App\Entities\Serie::all()->each(function($serie) {
+            $serie->categories()->attach($serie->category_serie_id);
+        });
+
         //Delete relation by default
         Schema::table('series', function(Blueprint $table) {
             $table->dropForeign(['category_serie_id']);

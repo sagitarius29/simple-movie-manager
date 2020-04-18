@@ -16,4 +16,9 @@ class Movie extends Model
     ];
 
     protected $appends = ['acl'];
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'categories_movies');
+    }
 }
