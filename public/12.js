@@ -69,7 +69,7 @@ __webpack_require__.r(__webpack_exports__);
     loadCategory: function loadCategory() {
       var _this = this;
 
-      axios.get('/categories-series/' + this.$route.params.cat_id + '/series/' + this.$route.params.id).then(function (_ref) {
+      axios.get('/series/' + this.$route.params.id).then(function (_ref) {
         var data = _ref.data;
         _this.serieName = data.name;
       });

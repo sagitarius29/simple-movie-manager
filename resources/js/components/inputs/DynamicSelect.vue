@@ -63,11 +63,11 @@
     },
     mounted() {
       this.loadOptions();
-      this.getDocumentInfo(this.value);
+      this.loadDocumentInfo(this.value);
     },
     watch: {
       value(val) {
-        this.getDocumentInfo(val);
+        this.loadDocumentInfo(val);
       }
     },
     methods: {
@@ -100,7 +100,7 @@
           this.$emit('onSelected', object);
         }
       },
-      getDocumentInfo(value) {
+      loadDocumentInfo(value) {
         if (!value) {
           return false
         }

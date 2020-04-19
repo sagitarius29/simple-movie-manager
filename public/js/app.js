@@ -98194,46 +98194,46 @@ var routes = [
 }, {
   path: '/movies',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 8).then(__webpack_require__.bind(null, /*! ./pages/MoviesPage */ "./resources/js/pages/MoviesPage.vue"));
+    return Promise.all(/*! import() */[__webpack_require__.e(8), __webpack_require__.e(4), __webpack_require__.e(0), __webpack_require__.e(13)]).then(__webpack_require__.bind(null, /*! ./pages/MoviesPage */ "./resources/js/pages/MoviesPage.vue"));
   }
 }, {
   path: '/series',
   component: function component() {
-    return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(4), __webpack_require__.e(0), __webpack_require__.e(5)]).then(__webpack_require__.bind(null, /*! ./pages/SeriesPage */ "./resources/js/pages/SeriesPage.vue"));
+    return Promise.all(/*! import() */[__webpack_require__.e(8), __webpack_require__.e(4), __webpack_require__.e(0), __webpack_require__.e(5)]).then(__webpack_require__.bind(null, /*! ./pages/SeriesPage */ "./resources/js/pages/SeriesPage.vue"));
   }
 }, {
   path: '/categories',
   component: function component() {
-    return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(9)]).then(__webpack_require__.bind(null, /*! ./pages/movies/CategoriesPage */ "./resources/js/pages/movies/CategoriesPage.vue"));
+    return Promise.all(/*! import() */[__webpack_require__.e(8), __webpack_require__.e(3), __webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(9)]).then(__webpack_require__.bind(null, /*! ./pages/movies/CategoriesPage */ "./resources/js/pages/movies/CategoriesPage.vue"));
   }
 }, {
   path: '/categories/:id/movies',
   component: function component() {
-    return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(4), __webpack_require__.e(0), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ./pages/movies/MoviesPage */ "./resources/js/pages/movies/MoviesPage.vue"));
+    return Promise.all(/*! import() */[__webpack_require__.e(8), __webpack_require__.e(4), __webpack_require__.e(0), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ./pages/movies/MoviesPage */ "./resources/js/pages/movies/MoviesPage.vue"));
   },
   name: 'categories.movies'
 }, {
   path: '/categories-series',
   component: function component() {
-    return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! ./pages/series/CategoriesSeriesPage */ "./resources/js/pages/series/CategoriesSeriesPage.vue"));
+    return Promise.all(/*! import() */[__webpack_require__.e(8), __webpack_require__.e(3), __webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! ./pages/series/CategoriesSeriesPage */ "./resources/js/pages/series/CategoriesSeriesPage.vue"));
   },
   name: 'categories-series'
 }, {
   path: '/categories-series/:id/series',
   component: function component() {
-    return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(7)]).then(__webpack_require__.bind(null, /*! ./pages/series/SeriesPage */ "./resources/js/pages/series/SeriesPage.vue"));
+    return Promise.all(/*! import() */[__webpack_require__.e(8), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(7)]).then(__webpack_require__.bind(null, /*! ./pages/series/SeriesPage */ "./resources/js/pages/series/SeriesPage.vue"));
   },
   name: 'categories.series'
 }, {
-  path: '/categories-series/:cat_id/series/:id/seasons',
+  path: '/series/:id/seasons',
   component: function component() {
-    return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(12)]).then(__webpack_require__.bind(null, /*! ./pages/series/SeasonsPage */ "./resources/js/pages/series/SeasonsPage.vue"));
+    return Promise.all(/*! import() */[__webpack_require__.e(8), __webpack_require__.e(3), __webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(12)]).then(__webpack_require__.bind(null, /*! ./pages/series/SeasonsPage */ "./resources/js/pages/series/SeasonsPage.vue"));
   },
   name: 'series.seasons'
 }, {
   path: '/series/:serie_id/seasons/:id/chapters',
   component: function component() {
-    return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, /*! ./pages/series/ChaptersPage */ "./resources/js/pages/series/ChaptersPage.vue"));
+    return Promise.all(/*! import() */[__webpack_require__.e(8), __webpack_require__.e(3), __webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, /*! ./pages/series/ChaptersPage */ "./resources/js/pages/series/ChaptersPage.vue"));
   },
   name: 'seasons.chapters'
 }]; // 3. Create the router instance and pass the `routes` option

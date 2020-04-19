@@ -13,7 +13,7 @@ const routes = [
   { path: '/categories/:id/movies', component: () => import('./pages/movies/MoviesPage'), name: 'categories.movies' },
   { path: '/categories-series', component: () => import('./pages/series/CategoriesSeriesPage'), name: 'categories-series' },
   { path: '/categories-series/:id/series', component: () => import('./pages/series/SeriesPage'), name: 'categories.series' },
-  { path: '/categories-series/:cat_id/series/:id/seasons', component: () => import('./pages/series/SeasonsPage'), name: 'series.seasons' },
+  { path: '/series/:id/seasons', component: () => import('./pages/series/SeasonsPage'), name: 'series.seasons' },
   { path: '/series/:serie_id/seasons/:id/chapters', component: () => import('./pages/series/ChaptersPage'), name: 'seasons.chapters' },
 ];
 

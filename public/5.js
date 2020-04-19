@@ -77,11 +77,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.loadOptions();
-    this.getDocumentInfo(this.value);
+    this.loadDocumentInfo(this.value);
   },
   watch: {
     value: function value(val) {
-      this.getDocumentInfo(val);
+      this.loadDocumentInfo(val);
     }
   },
   methods: {
@@ -114,7 +114,7 @@ __webpack_require__.r(__webpack_exports__);
         this.$emit('onSelected', object);
       }
     },
-    getDocumentInfo: function getDocumentInfo(value) {
+    loadDocumentInfo: function loadDocumentInfo(value) {
       var _this2 = this;
 
       if (!value) {
@@ -337,7 +337,7 @@ var render = function() {
           _c("list-page-component", {
             ref: "listPage",
             attrs: {
-              "header-title": "Lista de Series",
+              "header-title": "Lista de Series en General",
               endpoint: "series",
               "element-name": "Serie",
               "element-default": _vm.documentDefault,
@@ -465,10 +465,7 @@ var render = function() {
                         attrs: {
                           to: {
                             name: "series.seasons",
-                            params: {
-                              id: rowData.id,
-                              cat_id: _vm.$route.params.id
-                            }
+                            params: { id: rowData.id }
                           },
                           title: "Lista de Temporadas"
                         }

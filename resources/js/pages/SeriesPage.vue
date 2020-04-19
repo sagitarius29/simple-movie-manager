@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <list-page-component header-title="Lista de Series"
+                <list-page-component header-title="Lista de Series en General"
                                      :endpoint="'series'"
                                      element-name="Serie"
                                      :element-default="documentDefault"
@@ -30,7 +30,7 @@
                     </template>
 
                     <template v-slot:actionicon="{rowData}">
-                        <router-link :to="{name: 'series.seasons', params: {id: rowData.id, cat_id: $route.params.id}}" class="btn btn-outline-primary" title="Lista de Temporadas"><i class="fas fa-film"/></router-link>
+                        <router-link :to="{name: 'series.seasons', params: {id: rowData.id}}" class="btn btn-outline-primary" title="Lista de Temporadas"><i class="fas fa-film"/></router-link>
                     </template>
                 </list-page-component>
             </div>

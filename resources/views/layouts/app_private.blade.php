@@ -50,10 +50,13 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <router-link class="nav-link" to="/categories-series">Series</router-link>
+                                <router-link class="nav-link" to="/">Principal</router-link>
                             </li>
                             <li class="nav-item">
-                                <router-link class="nav-link" to="/categories">Películas</router-link>
+                                <router-link class="nav-link" to="/categories">Cat. Películas</router-link>
+                            </li>
+                            <li class="nav-item">
+                                <router-link class="nav-link" to="/categories-series">Cat. Series</router-link>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

@@ -57,7 +57,7 @@
     },
     methods: {
       loadCategory() {
-        axios.get('/categories-series/'+this.$route.params.cat_id+'/series/'+this.$route.params.id).then(({data}) => {
+        axios.get('/series/'+this.$route.params.id).then(({data}) => {
           this.serieName = data.name;
         });
       }
