@@ -17,7 +17,7 @@
             </slot>
           </ul>
           <div class="tab-content p-4">
-            <data-table-component :api="apiRoot + endpoint" :fields="tableFieldsComputed" :key="keyList" ref="dataTable">
+            <data-table-component :more-params="moreParams" :api="apiRoot + endpoint" :fields="tableFieldsComputed" :key="keyList" ref="dataTable">
               <template v-slot:actionicon="{rowData}">
                 <slot name="actionicon" v-bind:rowData="rowData"/>
               </template>
@@ -58,6 +58,13 @@
     name: "ListPageComponent",
     components: {DataCrudComponent, DataTableComponent},
     props: {
+      moreParams: {
+        default() {
+          return {
+            filterCols: ''
+          }
+        }
+      },
       headerTitle: {
         default: ''
       },

@@ -22,6 +22,7 @@ class SerieController extends Controller
         }
 
         $processor->setSearchCols(['name']);
+        $processor->setAvailableRelations('categories');
 
         $processor->enableGetAll();
 
@@ -81,10 +82,17 @@ class SerieController extends Controller
         return response()->json($serie, 201);
     }
 
-    public function update(CategorySerie $category, Serie $serie, SerieRequest $request)
+    public function update(?CategorySerie $category, Serie $serie, SerieRequest $request)
     {
-        $serie->fill($request->validated());
+        $input = $request->validated();
+
+        $serie->fill($input);
         $serie->save();
+
+        if(isset($input['categories'])) {
+            $categories = collect($input['categories'])->pluck('id');
+            $serie->categories()->sync($categories);
+        }
 
         return response()->json($serie);
     }

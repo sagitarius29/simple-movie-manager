@@ -5,12 +5,12 @@
                   :multiple="config.multiple"
                   :options="options"
                   @search="onSearch"
-                  :label="config.nameField"
+                  :label="defaultConfig.nameField"
                   :placeholder="placeholder"
                   :filterable="false">
             <template v-slot:option="option">
                 <slot :option="option" name="option">
-                    {{ option[config.nameField] }}
+                    {{ option[defaultConfig.nameField] }}
                 </slot>
             </template>
             <div slot="no-options">No se han encontrado resultados.</div>
@@ -49,29 +49,25 @@
           multiple: false,
           loadIfSelect: true
         },
-        selected: '',
+        selected: null,
         selectedObject: null,
         options: []
       }
     },
-    mounted() {
+    beforeMount() {
+      //Loading Config
       this.defaultConfig = _.defaults(this.config, this.defaultConfig);
       if (this.defaultConfig.multiple) {
         this.defaultConfig.loadIfSelect = false;
       }
-
-      if (this.value !== null && this.selected === '') {
-        this.getDocumentInfo(this.value);
-      }
+    },
+    mounted() {
       this.loadOptions();
+      this.getDocumentInfo(this.value);
     },
     watch: {
       value(val) {
-        if (val === null) {
-          this.selected = '';
-        } else {
-          this.getDocumentInfo(val);
-        }
+        this.getDocumentInfo(val);
       }
     },
     methods: {
@@ -96,37 +92,29 @@
         });
       },
       setSelected(object) {
-        console.log('select ', object);
-        if (object !== null) {
-          let val;
-          if (!this.defaultConfig.multiple) {
-            val = object[this.defaultConfig.valueField];
-            this.selected = object[this.defaultConfig.nameField];
-            this.selectedObject = object;
-          } else {
-            val = object;
-            this.selected = object;
-            this.selectedObject = object;
-          }
-
-          this.$emit('input', val);
+        if(this.defaultConfig.multiple) {
+          this.$emit('input', object);
           this.$emit('onSelected', object);
         } else {
-          this.$emit('onReset', this.selectedObject);
-          this.$emit('input', '');
-          this.selected = '';
-          this.selectedObject = null;
+          this.$emit('input', object[this.defaultConfig.valueField]);
+          this.$emit('onSelected', object);
         }
       },
-      getDocumentInfo(id) {
-        if (id === '' || id === null) {
+      getDocumentInfo(value) {
+        if (!value) {
           return false
+        }
+
+        if(this.defaultConfig.multiple) {
+          this.selected = value;
+          return true;
         }
 
         if (this.defaultConfig.loadIfSelect !== undefined && !this.defaultConfig.loadIfSelect) {
           return false;
         }
-        axios.get(this.defaultConfig.endpoint + '/' + id).then((r) => {
+
+        axios.get(this.defaultConfig.endpoint + '/' + value).then((r) => {
           this.selected = r.data[this.defaultConfig.nameField];
         });
       }

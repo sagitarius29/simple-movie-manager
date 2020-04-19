@@ -7,6 +7,8 @@ Vue.use(VueRouter);
 const routes = [
   /*{ path: '/', component: DashboardPage },*/
   { path: '/', component: DashboardPage },
+  { path: '/movies', component: () => import('./pages/MoviesPage') },
+  { path: '/series', component: () => import('./pages/SeriesPage') },
   { path: '/categories', component: () => import('./pages/movies/CategoriesPage') },
   { path: '/categories/:id/movies', component: () => import('./pages/movies/MoviesPage'), name: 'categories.movies' },
   { path: '/categories-series', component: () => import('./pages/series/CategoriesSeriesPage'), name: 'categories-series' },
