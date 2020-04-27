@@ -21,4 +21,9 @@ class Season extends Model
     {
         return $this->hasMany(Chapter::class);
     }
+
+    public function serie()
+    {
+        return $this->belongsTo(Serie::class);
+    }
 }
