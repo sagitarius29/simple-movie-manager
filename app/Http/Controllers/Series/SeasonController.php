@@ -13,6 +13,8 @@ use Illuminate\Http\Response;
 
 class SeasonController extends Controller
 {
+    protected $availableRelations = ['serie'];
+
     public function index(Serie $serie)
     {
         $processor = new RestProcessor($serie->seasons());
@@ -26,6 +28,9 @@ class SeasonController extends Controller
 
     public function show(Serie $serie, Season $season)
     {
+        if(request()->has('withRelation') && in_array(request()->get('withRelation'), $this->availableRelations)) {
+            $season->load(request()->get('withRelation'));
+        }
         return $season;
     }
 
