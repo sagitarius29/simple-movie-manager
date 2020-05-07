@@ -32,6 +32,10 @@
                             <input v-model="document.url" type="text" class="form-control">
                         </div>
                     </template>
+
+                    <template v-slot:actionicon="{rowData}">
+                        <a :href="rowData.player" target="_blank" class="btn btn-outline-primary" title="Reproductor"><i class="fa fa-play-circle"/></a>
+                    </template>
                 </list-page-component>
             </div>
         </div>
@@ -83,6 +87,12 @@
             name: '__slot:actions',
           }
         ]
+      }
+    },
+    methods: {
+      hasVideoPlayer(url) {
+        let regex = new RegExp('\.mp4$', 'i');
+        return regex.test(url);
       }
     }
   }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Series;
 
+use App\Entities\Category;
+use App\Entities\Movie;
 use App\Entities\Season;
 use App\Entities\Chapter;
 use App\Forms\ChapterForm;
@@ -49,6 +51,17 @@ class ChapterController extends Controller
         $chapter->delete();
 
         return response()->json('ok', Response::HTTP_NO_CONTENT);
+    }
+
+    public function player(?Season $season, Chapter $chapter)
+    {
+        if(!preg_match('/\.mp4$/i', $chapter->url)) {
+            return redirect($chapter->url);
+        }
+
+        return view('layouts.videoplayer')->with([
+            'videoUrl' => $chapter->url
+        ]);
     }
 
     public function formSchema()

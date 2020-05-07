@@ -26,6 +26,8 @@ Route::post('upload/image', 'UploadController@imageUpload')->name('upload.image'
 Route::post('upload/universal-file', 'UploadController@universalUpload')->name('upload.universal-file');
 Route::get('file/private/{fileName}', 'UploadController@getPrivateFile')->name('file.private');
 
+Route::view('video-player', 'layouts.videoplayer');
+
 //Authenticated
 Route::middleware('auth')->group(function() {
     //Categories
@@ -48,3 +50,7 @@ Route::middleware('auth')->group(function() {
     //Chapters
     \App\Helper::routes_crud('seasons/{season}/chapters', 'Series\ChapterController', 'seasons.chapters', '{chapter}');
 });
+
+//videoplayers
+Route::get('video-player/mov/{movie}', 'MovieController@player')->name('player.movie');
+Route::get('video-player/ch/{chapter}', 'Series\ChapterController@player')->name('player.chapter');

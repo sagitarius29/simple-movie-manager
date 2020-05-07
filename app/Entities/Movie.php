@@ -15,10 +15,15 @@ class Movie extends Model
         'name', 'cover', 'url'
     ];
 
-    protected $appends = ['acl'];
+    protected $appends = ['acl', 'player'];
 
     public function categories()
     {
         return $this->belongsToMany(Category::class, 'categories_movies');
+    }
+
+    public function getPlayerAttribute()
+    {
+        return route('player.movie', $this->id);
     }
 }

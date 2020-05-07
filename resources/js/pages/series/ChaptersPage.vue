@@ -11,6 +11,10 @@
                     <template v-slot:storeupdate="{document, errors}">
                         <form-dynamic-component :endpoint="'seasons/'+$route.params.id+'/chapters/form-schema'" :document="document" :errors="errors"/>
                     </template>
+
+                    <template v-slot:actionicon="{rowData}">
+                        <a :href="rowData.player" target="_blank" class="btn btn-outline-primary" title="Reproductor"><i class="fa fa-play-circle"/></a>
+                    </template>
                 </list-page-component>
             </div>
         </div>

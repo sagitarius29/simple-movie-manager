@@ -29,7 +29,7 @@ class MovieControllerTest extends CrudTestCase
 
     protected function excludeAttrBeforeAssert(): array
     {
-        return ['acl'];
+        return ['acl', 'player'];
     }
 
     public function test_list()

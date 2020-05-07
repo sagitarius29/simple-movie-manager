@@ -109,6 +109,17 @@ class MovieController extends Controller
         return response()->json('ok', Response::HTTP_NO_CONTENT);
     }
 
+    public function player(?Category $category, Movie $movie)
+    {
+        if(!preg_match('/\.mp4$/i', $movie->url)) {
+            return redirect($movie->url);
+        }
+
+        return view('layouts.videoplayer')->with([
+            'videoUrl' => $movie->url
+        ]);
+    }
+
     public function formSchema()
     {
         return MovieForm::storeForm()->render();

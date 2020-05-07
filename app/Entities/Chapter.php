@@ -15,5 +15,10 @@ class Chapter extends Model
         'name', 'url', 'order'
     ];
 
-    protected $appends = ['acl'];
+    protected $appends = ['acl', 'player'];
+
+    public function getPlayerAttribute()
+    {
+        return route('player.chapter', $this->id);
+    }
 }
