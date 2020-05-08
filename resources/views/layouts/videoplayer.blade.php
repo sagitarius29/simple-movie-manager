@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Video Player</title>
     <script src="//content.jwplatform.com/libraries/0P4vdmeO.js"></script>
     {{--<script>jwplayer.key='IMtAJf5X9E17C1gol8B45QJL5vWOCxYUDyznpA==';</script>--}}
     <style>
         body {
             margin: 0;
             padding: 0;
+            background: black;
         }
     </style>
 </head>
@@ -18,7 +22,7 @@
     file: '{{ $videoUrl  }}',
     type: 'mp4',
     width: '100%',
-    height: '100vh'
+    aspectratio: '16:9'
   });
 
   /*// Listen to an event
