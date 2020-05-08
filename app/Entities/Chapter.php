@@ -21,4 +21,9 @@ class Chapter extends Model
     {
         return route('player.chapter', $this->id);
     }
+
+    public function season()
+    {
+        return $this->belongsTo(Season::class);
+    }
 }
