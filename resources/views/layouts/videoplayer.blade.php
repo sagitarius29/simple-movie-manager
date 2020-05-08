@@ -23,7 +23,8 @@
     image: '{{ $image  }}',
     type: 'mp4',
     width: '100%',
-    aspectratio: '16:9'
+    aspectratio: '16:9',
+    stretching: 'fill'
   });
 
   /*// Listen to an event
