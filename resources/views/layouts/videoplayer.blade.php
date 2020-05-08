@@ -20,6 +20,7 @@
   // Setup the player
   const player = jwplayer('player').setup({
     file: '{{ $videoUrl  }}',
+    image: '{{ $image  }}',
     type: 'mp4',
     width: '100%',
     aspectratio: '16:9'

@@ -60,7 +60,8 @@ class ChapterController extends Controller
         }
 
         return view('layouts.videoplayer')->with([
-            'videoUrl' => $chapter->url
+            'videoUrl' => $chapter->url,
+            'image' => $chapter->season->serie->cover
         ]);
     }
 

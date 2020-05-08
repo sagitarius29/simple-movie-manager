@@ -116,7 +116,8 @@ class MovieController extends Controller
         }
 
         return view('layouts.videoplayer')->with([
-            'videoUrl' => $movie->url
+            'videoUrl' => $movie->url,
+            'image' => $movie->cover
         ]);
     }
 
