@@ -26,7 +26,7 @@ class ChapterRequest extends FormRequest
         return [
             'name'  => 'required|string|max:200',
             'order' => 'nullable|numeric',
-            'url'  => 'required|url|max:200',
+            'url'  => 'required|url|max:400',
         ];
     }
 }
