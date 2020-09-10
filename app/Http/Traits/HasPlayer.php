@@ -10,13 +10,12 @@ trait HasPlayer
     public function toPlayer(string $url, string $cover)
     {
         $sources = false;
-        /*if(!preg_match('/\.mp4$/i', $url)) {
-            return redirect($url);
-        }*/
 
         if(strpos($url, 'drive.google.com') !== false) {
             $url = (new SourcesGenerator($url))->generateSources();
             $sources = true;
+        } elseif(!preg_match('/\.mp4$/i', $url)) {
+            return redirect($url);
         }
 
         $packer = $this->packer($url, $cover, $sources);
