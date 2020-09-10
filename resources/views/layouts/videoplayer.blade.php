@@ -12,20 +12,16 @@
             padding: 0;
             background: black;
         }
+        #player {
+            max-height: 100vh;
+        }
     </style>
 </head>
 <body>
 <div id="player">Loading the player...</div>
 <script>
   // Setup the player
-  const player = jwplayer('player').setup({
-    file: '{{ $videoUrl  }}',
-    image: '{{ $image  }}',
-    type: 'mp4',
-    width: '100%',
-    aspectratio: '16:9',
-    stretching: 'fill'
-  });
+  {!! $packer !!}
 
   /*// Listen to an event
   player.on('pause', (event) => {

@@ -26,7 +26,7 @@ Route::post('upload/image', 'UploadController@imageUpload')->name('upload.image'
 Route::post('upload/universal-file', 'UploadController@universalUpload')->name('upload.universal-file');
 Route::get('file/private/{fileName}', 'UploadController@getPrivateFile')->name('file.private');
 
-Route::view('video-player', 'layouts.videoplayer');
+Route::get('video-player', 'VideoPlayerController@player')->name('video-player');
 
 //Authenticated
 Route::middleware('auth')->group(function() {
