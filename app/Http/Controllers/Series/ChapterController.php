@@ -8,12 +8,15 @@ use App\Entities\Season;
 use App\Entities\Chapter;
 use App\Forms\ChapterForm;
 use App\Http\Requests\ChapterRequest;
+use App\Http\Traits\HasPlayer;
 use App\Lib\RestProcessor;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 
 class ChapterController extends Controller
 {
+    use HasPlayer;
+
     public function index(Season $season)
     {
         $processor = new RestProcessor($season->chapters());
@@ -55,14 +58,7 @@ class ChapterController extends Controller
 
     public function player(?Season $season, Chapter $chapter)
     {
-        if(!preg_match('/\.mp4$/i', $chapter->url)) {
-            return redirect($chapter->url);
-        }
-
-        return view('layouts.videoplayer')->with([
-            'videoUrl' => $chapter->url,
-            'image' => $chapter->season->serie->cover
-        ]);
+        return $this->toPlayer($chapter->url, $chapter->season->serie->cover);
     }
 
     public function formSchema()

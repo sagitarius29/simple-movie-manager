@@ -7,12 +7,14 @@ use App\Entities\Movie;
 use App\Forms\CategoryForm;
 use App\Forms\MovieForm;
 use App\Http\Requests\MovieRequest;
+use App\Http\Traits\HasPlayer;
 use App\Lib\RestProcessor;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class MovieController extends Controller
 {
+    use HasPlayer;
     public function index(?Category $category)
     {
         if(!$category->exists) {
@@ -111,14 +113,7 @@ class MovieController extends Controller
 
     public function player(?Category $category, Movie $movie)
     {
-        if(!preg_match('/\.mp4$/i', $movie->url)) {
-            return redirect($movie->url);
-        }
-
-        return view('layouts.videoplayer')->with([
-            'videoUrl' => $movie->url,
-            'image' => $movie->cover
-        ]);
+        return $this->toPlayer($movie->url, $movie->cover);
     }
 
     public function formSchema()
