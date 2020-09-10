@@ -11,23 +11,25 @@ trait HasPlayer
     {
         $sources = false;
 
-        if(strpos($url, 'drive.google.com') !== false) {
-            $url = (new SourcesGenerator($url))->generateSources();
+        if (strpos($url, 'drive.google.com') !== false) {
+            $url     = (new SourcesGenerator($url))->generateSources();
             $sources = true;
-        } elseif(!preg_match('/\.mp4$/i', $url)) {
+        } elseif (strpos($url, 'vid.cpanels.us') !== false) {
+            return redirect($url.'&poster='.$cover);
+        } elseif (!preg_match('/\.mp4$/i', $url)) {
             return redirect($url);
         }
 
         $packer = $this->packer($url, $cover, $sources);
 
         return view('layouts.videoplayer')->with([
-            'packer' => $packer
+            'packer' => $packer,
         ]);
     }
 
     protected function packer(string $videoUrl, string $image, bool $sources)
     {
-        $data = "const player = jwplayer('player').setup({
+        $data   = "const player = jwplayer('player').setup({
     ".$this->sourcesOrFile($videoUrl, $sources).",
     image: '".$image."',
     type: 'mp4',
@@ -44,7 +46,7 @@ trait HasPlayer
 
     protected function sourcesOrFile($videoUrl, $sources)
     {
-        if($sources) {
+        if ($sources) {
             return 'sources: '.$videoUrl;
         }
 
