@@ -27,7 +27,8 @@ class MovieRequest extends FormRequest
             'id'         => 'nullable|integer|exists:movies,id',
             'name'       => 'nullable|string|max:250',
             'cover'      => 'required|url|max:250',
-            'url'        => 'nullable|url|max:400',
+            'url'        => 'nullable|url|max:600',
+            'sipnosis'   => 'nullable|string|max:400',
             'categories' => 'nullable|array',
         ];
     }

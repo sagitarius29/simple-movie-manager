@@ -12,7 +12,7 @@ class Season extends Model
     protected $table = 'seasons';
 
     protected $fillable = [
-        'name', 'order'
+        'name', 'order','trailer'
     ];
 
     protected $appends = ['acl'];

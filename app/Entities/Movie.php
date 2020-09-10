@@ -12,7 +12,7 @@ class Movie extends Model
     protected $table = 'movies';
 
     protected $fillable = [
-        'name', 'cover', 'url'
+        'name', 'cover', 'url','sipnosis'
     ];
 
     protected $appends = ['acl', 'player'];

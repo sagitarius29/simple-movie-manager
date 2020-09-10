@@ -26,6 +26,10 @@
                             <input v-model="document.name" type="text" class="form-control">
                         </div>
                         <div class="form-group">
+                            <label>Sipnosis</label>
+                            <input v-model="document.sipnosis" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
                             <label>Video URL</label>
                             <input v-model="document.url" type="text" class="form-control">
                         </div>
@@ -50,6 +54,7 @@
         documentDefault: {
           name: null,
           url: null,
+          sipnosis: null,
           cover: null
         },
         tableFields: [
@@ -63,6 +68,10 @@
           {
             title: 'Nombre',
             name: 'name',
+          },
+          {
+            title: 'Sipnosis',
+            name: 'sipnosis',
           },
           {
             title: 'Video Url',
@@ -93,6 +102,7 @@
       selectMovie(document, serie) {
         document.cover = serie.cover;
         document.name = serie.name;
+        document.sipnosis = serie.sipnosis;
         document.url = serie.url;
       }
     }

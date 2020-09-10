@@ -39,6 +39,7 @@ Route::middleware('auth')->group(function() {
 
     //Categories Series
     \App\Helper::routes_crud('categories-series', 'Series\CategorySerieController', 'categories-series', '{category}');
+    
     \App\Helper::routes_crud('categories-series/{category}/series', 'Series\SerieController', 'categories-series.series', '{serie}');
 
     //Series Global

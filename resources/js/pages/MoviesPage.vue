@@ -28,6 +28,10 @@
                             <input v-model="document.name" type="text" class="form-control">
                         </div>
                         <div class="form-group">
+                            <label>Sipnosis</label>
+                            <input v-model="document.sipnosis" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
                             <label>Video URL</label>
                             <input v-model="document.url" type="text" class="form-control">
                         </div>
@@ -55,6 +59,7 @@
           name: null,
           url: null,
           cover: null,
+          sipnosis: null,
           categories: []
         },
         moreParams: {
@@ -72,6 +77,10 @@
           {
             title: 'Nombre',
             name: 'name',
+          },
+          {
+            title: 'Sipnosis',
+            name: 'sipnosis',
           },
           {
             title: 'Categoría',

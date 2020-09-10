@@ -19,6 +19,7 @@ class MovieForm implements FormContract
             $form->addInput('Cover URL', 'cover', 'text');
             $form->addInput('Cover', 'cover', 'image');
             $form->addInput('Nombre', 'name', 'text');
+            $form->addInput('Sipnosis', 'sipnosis', 'text');
             $form->addInput('Video URL', 'url', 'text');
         });
 

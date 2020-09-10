@@ -1,0 +1,8 @@
+[12-Apr-2020 15:10:07 UTC] PHP Warning:  copy(): https:// wrapper is disabled in the server configuration by allow_url_fopen=0 in Command line code on line 1
+[12-Apr-2020 15:10:07 UTC] PHP Warning:  copy(https://getcomposer.org/installer): failed to open stream: no suitable wrapper could be found in Command line code on line 1
+[04-May-2020 16:07:16 UTC] PHP Parse error:  syntax error, unexpected 'class' (T_CLASS), expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in /home/controlvideo/panel-peliculas/artisan on line 33
+[20-Aug-2020 00:57:43 UTC] PHP Warning:  copy(): https:// wrapper is disabled in the server configuration by allow_url_fopen=0 in Command line code on line 1
+[20-Aug-2020 00:57:43 UTC] PHP Warning:  copy(https://getcomposer.org/installer): failed to open stream: no suitable wrapper could be found in Command line code on line 1
+[20-Aug-2020 00:57:43 UTC] PHP Warning:  hash_file(composer-setup.php): failed to open stream: No such file or directory in Command line code on line 1
+[20-Aug-2020 00:57:43 UTC] PHP Warning:  unlink(composer-setup.php): No such file or directory in Command line code on line 1
+[20-Aug-2020 00:57:46 UTC] PHP Warning:  unlink(composer-setup.php): No such file or directory in Command line code on line 1

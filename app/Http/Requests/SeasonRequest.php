@@ -25,7 +25,8 @@ class SeasonRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:200',
-            'order' => 'nullable|numeric'
+            'order' => 'nullable|numeric',
+            'trailer' => 'nullable|string|max:300'
         ];
     }
 }

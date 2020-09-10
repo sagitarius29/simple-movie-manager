@@ -18,6 +18,7 @@ class SeasonForm implements FormContract
 
             $form->addInput('Número Orden', 'order', 'number');
             $form->addInput('Nombre', 'name', 'text');
+            $form->addInput('Trailer', 'trailer', 'text');
         });
 
         return $formGenerator;

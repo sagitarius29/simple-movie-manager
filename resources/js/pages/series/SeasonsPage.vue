@@ -34,7 +34,8 @@
         documentDefault: {
           name: null,
           url: null,
-          cover: null
+          cover: null,
+          trailer: null
         },
         tableFields: [
           {
@@ -44,6 +45,10 @@
           {
             title: 'Nombre',
             name: 'name',
+          },
+          {
+            title: 'Trailer',
+            name: 'trailer',
           },
           {
             title: 'Acciones',
