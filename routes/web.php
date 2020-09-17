@@ -39,7 +39,7 @@ Route::middleware('auth')->group(function() {
 
     //Categories Series
     \App\Helper::routes_crud('categories-series', 'Series\CategorySerieController', 'categories-series', '{category}');
-    
+
     \App\Helper::routes_crud('categories-series/{category}/series', 'Series\SerieController', 'categories-series.series', '{serie}');
 
     //Series Global
@@ -55,3 +55,4 @@ Route::middleware('auth')->group(function() {
 //videoplayers
 Route::get('video-player/mov/{movie}', 'MovieController@player')->name('player.movie');
 Route::get('video-player/ch/{chapter}', 'Series\ChapterController@player')->name('player.chapter');
+Route::get('video-player/ssn/{season}', 'Series\SeasonController@player')->name('player.season');

@@ -15,7 +15,7 @@ class Season extends Model
         'name', 'order','trailer'
     ];
 
-    protected $appends = ['acl'];
+    protected $appends = ['acl', 'player'];
 
     public function chapters()
     {
@@ -25,5 +25,10 @@ class Season extends Model
     public function serie()
     {
         return $this->belongsTo(Serie::class);
+    }
+
+    public function getPlayerAttribute()
+    {
+        return route('player.season', $this->id);
     }
 }
