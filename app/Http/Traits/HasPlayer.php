@@ -14,6 +14,8 @@ trait HasPlayer
         if (strpos($url, 'drive.google.com') !== false) {
             $url     = (new SourcesGenerator($url))->generateSources();
             $sources = true;
+        } elseif (strpos($url, 'dropbox.com') !== false) {
+            $url     = str_replace(['www.dropbox.com', '?dl=0'], ['dl.dropboxusercontent.com', ''], $url);
         } elseif (strpos($url, 'vid.cpanels.us') !== false) {
             return redirect($url.'&poster='.$cover);
         } elseif (!preg_match('/\.mp4$/i', $url)) {
